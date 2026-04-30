@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h2>Task Manager</h2>
+    <form onsubmit="addtask(); return false;">
+        <label> Task:</label>
+        <input type="text" id="task" required><br><br>
+        <label>Description:</label>
+        <input type="text" id="desc" required><br><br>
+        <label>Completion Date</label>
+        <input type="date" id="date" required><br><br>
+
+        <button type="'submit">Add Task</button>
+    </form>
+    <hr>
+
+    <table border="1" id="tasktable">
+        <tr>
+            <th>Sno</th>
+            <th>Task</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>delete</th>
+        </tr>
+    </table>
+
+    <script>
+        let count = 0;
+        function addtask(){
+            count++;
+            let task = document.getElementById('task').value;
+            let desc = document.getElementById('desc').value;
+            let date = document.getElementById('date').value;
+            let table = document.getElementById('tasktable');
+            let row = table.insertRow();
+
+            row.insertCell(0).innerText = count;
+            row.insertCell(1).innerText = task;
+            row.insertCell(2).innerText = desc;
+            row.insertCell(3).innerText = date;
+
+            let statuscell = row.insertCell(4);
+            
+            let btn = document.createElement("button");
+            btn.innerText = 'pending';
+            btn.onclick = function(){
+                if(btn.innerText === 'pending'){
+                    btn.innerText = 'completed';
+                }
+                else{
+                    btn.innerText = 'pending';
+                }
+            };
+            statuscell.appendChild(btn);
+            document.getElementById("task").value = "";
+            document.getElementById("desc").value = "";
+            document.getElementById("date").value = "";
+
+            let deleteCell = row.insertCell(5);
+
+            let deletebtn = document.createElement("button");
+            deletebtn.innerText = "delete";
+
+            deletebtn.onclick = function(){
+                row.remove();
+            }
+            deleteCell.appendChild(deletebtn);
+
+        }
+    </script>
+</body>
+</html>
