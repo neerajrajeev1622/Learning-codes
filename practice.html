@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Practicing Javascript</title>
+    </head>
+    <body>
+        <div id="idfirst">
+        <h1 id="id0">Scientific Calculator 2.0</h1>
+        <hr>
+        <marquee direction="left" id="idhalf"> You can solve your 
+            silly little problems regarding arithematics here, give it a try!</marquee>
+        <hr>
+        <div id="id1">
+        <input type="number" id="num1" placeholder="Enter number 1: ">
+        <input type="number" id="num2" placeholder="Enter number 2: ">
+        <br><br>
+        <button type="button" onclick="getadded()">a+b</button>
+        <button type="button" onclick="getsubtracted()">a-b</button>
+        <button type="button" onclick="getmultiplied()">a*b</button>
+        <button type="button" onclick="getdivided()">a/b</button>
+        <button type="button" onclick="getmoded()">a%b</button>
+        <button type="button" onclick="getpower()">a^b</button>
+        <br><br>
+        <button type="button" onclick="getsqr()">a^2</button>
+        <button type="button" onclick="getcubed()">a^3</button>
+        <button type="button" onclick="getinv()">1/a</button>
+        <button type="button" onclick="getroot()">√a</button>
+        <button type="button" onclick="getcuberoot()">3√a</button>
+        <button type="button" onclick="gettenpower()">10^a</button>
+        <br><br>
+        <button type="button" onclick="getGCD()">HCF(a,b)</button>
+        <button type="button" onclick="getLCM()">LCM(a,b)</button>
+        <button type="button" onclick="getGCD()">GCD(a,b)</button>
+        <button type="button" onclick="getfact()">a!</button>
+        <button type="button" onclick="getlog()">log(a)</button>
+        <button type="button" onclick="getexp()">e^a</button>
+        <br><br>
+        <button type="button" onclick="getsin()">sin(a)</button>
+        <button type="button" onclick="getcos()">cos(a)</button>
+        <button type="button" onclick="gettan()">tan(a)</button>
+        <button type="button" onclick="getsec()">sec(a)</button>
+        <button type="button" onclick="getcosec()">cosec(a)</button>
+        <button type="button" onclick="getcot()">cot(a)</button>
+        
+        <p>....</p>
+        </div>
+    
+
+        <p id="id2">Result:</p>
+        </div>
+        <script>
+            function getadded(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                let z = x+y;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getsubtracted(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                let z = x-y;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getmultiplied(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                let z = x*y;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getdivided(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                if(y == 0){
+                    document.getElementById("id2").innerText = "Error!"
+                }
+                else{
+                    let z = x/y;
+                    document.getElementById("id2").innerText = "Result: "+z;
+                }
+            }
+            function getmoded(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                let z = x%y;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getpower(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                let z = x**y;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getsqr(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = x*x;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getcubed(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = x*x*x;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getinv(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = 1/x;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getroot(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.sqrt(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getcuberoot(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.cbrt(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function gettenpower(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = 10**x;
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getGCD(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                function GCD(a,b){
+                    while(b != 0){
+                        let temp = b;
+                        b = a%b;
+                        a = temp;
+                    }
+                    return a;
+                }
+                let z = GCD(x,y);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getLCM(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let y = parseFloat(document.getElementById("num2").value);
+                function GCD(a,b){
+                    while(b != 0){
+                        let temp = b;
+                        b = a%b;
+                        a = temp;
+                    }
+                    return a;
+                }
+                let z = (x*y)/GCD(x,y);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getfact(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let fact = 1;
+                for(let i = 1; i<= x; i++){
+                    fact *= i;
+                }
+                document.getElementById("id2").innerText = "Result: "+fact;
+            }
+            function getlog(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.log(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getexp(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.exp(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getsin(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.sin(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getcos(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.cos(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function gettan(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = Math.tan(x);
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getsec(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = 1/(Math.sin(x));
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getcosec(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = 1/(Math.cos(x));
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+            function getcot(){
+                let x = parseFloat(document.getElementById("num1").value);
+                let z = 1/(Math.tan(x));
+                document.getElementById("id2").innerText = "Result: "+z;
+            }
+        </script>
+        <style>
+            #idfirst{
+                text-align: center;
+                border: 2px solid black;
+                padding: 25px;
+                width: 500px;
+                margin: 50px auto;
+            }
+            #id0{
+                color: red;
+                background-color: darkblue;
+                text-align: center;
+                font-weight: bold;
+            }
+            #idhalf{
+                background-color: lightskyblue;
+                font-weight: bold;
+            }
+            #id1{
+                background-color: aqua;
+                text-align: center;
+            }
+            #id2{
+                background-color: black;
+                color: aliceblue;
+                text-align: center;
+                font-size: large;
+                font-weight: bold;
+            }
+        </style>
+    </body>
+</html>
